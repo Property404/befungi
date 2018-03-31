@@ -1,5 +1,5 @@
 # Befungi
-Simple Befunge93 interpreter.  
+Simple [Befunge-93](https://esolangs.org/wiki/Befunge) interpreter.  
 
 # Building and Testing
 ```shell
