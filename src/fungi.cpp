@@ -3,7 +3,17 @@
 
 Fungi::Fungi(const std::string& code)
 {
+	debug = false;
 	state.setCode(code);
+}
+State& Fungi::getState()
+{
+	return state;
+}
+
+void Fungi::setDebug()
+{
+	debug = true;
 }
 
 void Fungi::run()
@@ -12,6 +22,8 @@ void Fungi::run()
 	bool end = false;
 	while(true)
 	{
+		if(debug)
+			std::cout<<state.get();
 		// During string mode, we're just recording until we reach a quote
 		// symbol
 		if(stringmode)
@@ -196,6 +208,14 @@ void Fungi::run()
 				state.push(getchar());
 				break;
 				// End:
+			case 'g':
+				{
+					int x, y;
+					y = state.pop();
+					x = state.pop();
+					state.push(state.get(x,y));
+					break;
+				}
 			case '@':
 				end = true;
 				break;

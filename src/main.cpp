@@ -8,6 +8,7 @@
 int main(int argc, const char* argv[]){
 	args::ArgumentParser parser("Befunge interpreter", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
+	args::Flag debug(parser, "debug", "Debug - display each character before it is executed", {'d'});
 	args::Group required(parser, "", args::Group::Validators::AtLeastOne);
 	args::Positional<std::string> input_file(required, "input file", "The source file");
 
@@ -59,6 +60,8 @@ int main(int argc, const char* argv[]){
 
 	// Run file
 	Fungi fungi(contents);
+	if(debug)
+		fungi.setDebug();
 	fungi.run();
 
 
