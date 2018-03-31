@@ -18,7 +18,13 @@ TEST_CASE("Check fungi")
 			Fungi fungi("510p@");
 			fungi.run();
 			REQUIRE(fungi.getState().peek() == 0);
+			REQUIRE(fungi.getState().get(0, 0) == '5');
 			REQUIRE(fungi.getState().get(1, 0) == 5);
+			REQUIRE(fungi.getState().get(2, 0) == '0');
+			REQUIRE(fungi.getState().get(3, 0) == 'p');
+			REQUIRE(fungi.getState().get(4, 0) == '@');
+			REQUIRE(fungi.getState().get(5, 0) == 0);
+			REQUIRE(fungi.getState().get(6, 0) == 0);
 		}
 		{
 			Fungi fungi("2v\n <@9738#");
