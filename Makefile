@@ -7,9 +7,11 @@ TEST_DIR = ./tests/
 EXECUTABLE_NAME = befungi
 TEST_NAME = test
 
+INSTALL_DIR = /usr/local/bin/
+INSTALL_COMMAND = install
+
 # Compiler flags
-CC = g++ # More portable than using 'gcc,' but with risk
-	# of calling wrong compiler
+CC = g++
 CFLAGS = -Wall -Wextra -pedantic -std=c++14
 
 COMMON_FILES = state.o fungi.o
@@ -26,6 +28,10 @@ befungi: $(COMMON_SOURCES) $(NOTEST_SOURCES)
 test: $(COMMON_SOURCES) $(TEST_SOURCES)
 	$(CC) -o $(TEST_NAME) $(TEST_SOURCES) $(COMMON_SOURCES) $(CFLAGS)
 	./test
+install:
+	$(INSTALL_COMMAND) $(EXECUTABLE_NAME) $(INSTALL_DIR)
+uninstall:
+	rm $(INSTALL_DIR)/$(EXECUTABLE_NAME)
 clean:
 	rm -f *.o
 	rm -f $(COMMON_SOURCES)/*.o
