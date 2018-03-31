@@ -6,6 +6,7 @@
 TEST_CASE("State class works correctly"){
 	std::string code = "Anything\nElse\nBut\nLove!";
 	State state(code);
+	SECTION("Check if stack works correctly")
 	{
 		REQUIRE(state.peek() == 0);
 		REQUIRE(state.pop() == 0);
@@ -84,4 +85,3 @@ TEST_CASE("State class works correctly"){
 		REQUIRE(state.get(0,0) == 'C');
 	}
 }
-	

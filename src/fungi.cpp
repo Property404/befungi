@@ -216,6 +216,15 @@ void Fungi::run()
 					state.push(state.get(x,y));
 					break;
 				}
+			case 'p':
+				{
+					int x, y, v;
+					y = state.pop();
+					x = state.pop();
+					v = state.pop();
+					state.set(x,y, v);
+					break;
+				}
 			case '@':
 				end = true;
 				break;

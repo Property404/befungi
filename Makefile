@@ -13,7 +13,7 @@ CC = g++ # More portable than using 'gcc,' but with risk
 CFLAGS = -Wall -Wextra -pedantic -std=c++14
 
 COMMON_FILES = state.o fungi.o
-TEST_FILES = main.o state.o
+TEST_FILES = main.o state.o fungi.o
 NOTEST_FILES = main.o
 
 COMMON_SOURCES = $(COMMON_FILES:%.o=$(COMMON_DIR)/%.o)
