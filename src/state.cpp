@@ -40,7 +40,7 @@ void State::move(int m)
 	{
 		case UP:
 			pcy-=m;
-			pcy%=BEFUNGE_ROWS;
+			while(pcy<0)pcy = BEFUNGE_ROWS+pcy;
 			break;
 		case DOWN:
 			pcy+=m;
@@ -48,7 +48,7 @@ void State::move(int m)
 			break;
 		case LEFT:
 			pcx-=m;
-			pcx%=BEFUNGE_COLUMNS;
+			while(pcx<0)pcx = BEFUNGE_COLUMNS+pcx;
 			break;
 		case RIGHT:
 			pcx+=m;
@@ -113,7 +113,7 @@ int State::peek() const
 
 char State::get() const
 {
-	return program[pcy%BEFUNGE_ROWS][pcx%BEFUNGE_COLUMNS];
+	return get(pcx, pcy);
 }
 
 char State::get(int x, int y) const
@@ -139,3 +139,8 @@ void State::displayProgram() const
 		std::cout<<"\n";
 	}
 }
+void State::displayLocation() const
+{
+	std::cout<<"("<<pcx<<","<<pcy<<")\n";
+}
+

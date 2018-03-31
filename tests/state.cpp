@@ -52,10 +52,19 @@ TEST_CASE("State class works correctly"){
 		state.right();
 		state.move();
 		REQUIRE(state.get() == 'B');
+		state.left();
+		REQUIRE(state.get() == 'B');
+		state.move();
+		REQUIRE(state.get() == 't');
+		state.move();
+		REQUIRE(state.get() == 'u');
+		state.move();
+		REQUIRE(state.get() == 'B');
+		state.move();
+		REQUIRE(state.get() == 't');
 	}
 
 	SECTION("Check if code is copied correctly"){
-		std::cout<<code<<std::endl;
 		REQUIRE(state.get(0,0) == 'A');
 		REQUIRE(state.get(1,0) == 'n');
 		REQUIRE(state.get(2,0) == 'y');

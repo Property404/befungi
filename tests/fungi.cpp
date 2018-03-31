@@ -20,6 +20,24 @@ TEST_CASE("Check fungi")
 			REQUIRE(fungi.getState().peek() == 0);
 			REQUIRE(fungi.getState().get(1, 0) == 5);
 		}
+		{
+			Fungi fungi("2v\n <@9738#");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 9);
+			REQUIRE(fungi.getState().pop() == 7);
+			REQUIRE(fungi.getState().pop() == 3);
+			REQUIRE(fungi.getState().pop() == 2);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("1v\n\"<@\"wee");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 'w');
+			REQUIRE(fungi.getState().pop() == 'e');
+			REQUIRE(fungi.getState().pop() == 'e');
+			REQUIRE(fungi.getState().pop() == 1);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
 	}
 }
 

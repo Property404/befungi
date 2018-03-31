@@ -43,7 +43,7 @@ class State{
 
 		// Debugging functions
 		void displayProgram() const;
-		void displayStack() const;
+		void displayLocation() const;
 };
 	
 
