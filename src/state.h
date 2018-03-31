@@ -31,10 +31,10 @@ class State{
 		void move(int m=1);
 
 		// Stack manipulation
-		void push(int);
-		int pop();
-		int swap(); // Swap top stacks
-		int peek() const;
+		void push(long int);
+		long int pop();
+		long int swap(); // Swap top stacks
+		long int peek() const;
 
 		// Program manipulation
 		char get() const;

@@ -80,30 +80,30 @@ void State::setCode(const std::string& code)
 	}
 }
 
-void State::push(int s)
+void State::push(long int s)
 {
 	stack.push(s);
 }
 
-int State::pop()
+long int State::pop()
 {
 	// If stack is empty, just give 0
 	if(stack.empty())
 		return 0;
-	int p = stack.top();
+	long int p = stack.top();
 	stack.pop();
 	return p;
 }
 
-int State::swap()
+long int State::swap()
 {
-	int a = pop();
-	int b = pop();
+	long int a = pop();
+	long int b = pop();
 	push(a);
 	push(b);
 }
 
-int State::peek() const
+long int State::peek() const
 {
 	if(stack.empty())
 		return 0;

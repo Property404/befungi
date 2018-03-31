@@ -38,7 +38,53 @@ TEST_CASE("Check fungi")
 			REQUIRE(fungi.getState().pop() == 1);
 			REQUIRE(fungi.getState().pop() == 0);
 		}
+		{
+			Fungi fungi("98`89`@");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 0);
+			REQUIRE(fungi.getState().pop() == 1);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("0!8!@");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 0);
+			REQUIRE(fungi.getState().pop() == 1);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("9:@");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 9);
+			REQUIRE(fungi.getState().pop() == 9);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("89$@");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 8);
+			REQUIRE(fungi.getState().pop() == 0);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("8#9@");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 8);
+			REQUIRE(fungi.getState().pop() == 0);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("#5_3@8");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 3);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
+		{
+			Fungi fungi("1#5_3@9");
+			fungi.run();
+			REQUIRE(fungi.getState().pop() == 9);
+			REQUIRE(fungi.getState().pop() == 5);
+			REQUIRE(fungi.getState().pop() == 0);
+		}
 	}
 }
-
-

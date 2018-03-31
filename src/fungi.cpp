@@ -34,7 +34,7 @@ void Fungi::run()
 			}
 			else
 			{
-				state.push(state.get());
+				state.push((long int)state.get());
 			}
 			state.move();
 			continue;
@@ -102,22 +102,22 @@ void Fungi::run()
 				// Math
 			case '+':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					state.push(a+b);
 					break;
 				}
 			case '*':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					state.push(a*b);
 					break;
 				}
 			case '/':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					if(a==0)
 					{
 						std::cout<<"What is the result of "<<a<<"/0? ";
@@ -132,15 +132,15 @@ void Fungi::run()
 				}
 			case '-':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					state.push(b-a);
 					break;
 				}
 			case '%':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					state.push(b%a);
 					break;
 				}
@@ -151,8 +151,8 @@ void Fungi::run()
 				// Greater than
 			case '`':
 				{
-					int a = state.pop();
-					int b = state.pop();
+					long int a = state.pop();
+					long int b = state.pop();
 					state.push(b>a);
 					break;
 				}
@@ -213,6 +213,8 @@ void Fungi::run()
 					int x, y;
 					y = state.pop();
 					x = state.pop();
+					if(x<0 || x>=BEFUNGE_COLUMNS || y<0 || y>=BEFUNGE_ROWS)
+						state.push(0);
 					state.push(state.get(x,y));
 					break;
 				}
