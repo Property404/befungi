@@ -1,7 +1,7 @@
 # Befungi
 Simple [Befunge-93](https://esolangs.org/wiki/Befunge) interpreter.  
 
-# Building and Testing
+# Building and Installation
 ```shell
 $ git clone https://github.com/Property404/befungi
 $ cd befungi
