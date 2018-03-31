@@ -27,7 +27,7 @@ void Fungi::run()
 			state.move();
 			continue;
 		}
-		
+
 		// Directly execute commands
 		switch(state.get())
 		{
@@ -35,11 +35,15 @@ void Fungi::run()
 			case '"':
 				stringmode = true;
 				break;
-			// Pop from stack and display as ASCII
+				// Pop from stack and display as ASCII
 			case ',':
 				std::cout<<(char)state.pop();
 				break;
-			// Change direction
+				// Pop from stack and display as integer
+			case '.':
+				std::cout<<state.pop();
+				break;
+				// Change direction
 			case '<':
 				state.left();
 				break;
@@ -52,7 +56,25 @@ void Fungi::run()
 			case 'v':
 				state.down();
 				break;
-			// Push numeric literal onto stack
+				// Random direction
+			case '?':
+				switch(rand()%4)
+				{
+					case 0:
+						state.left();
+						break;
+					case 1:
+						state.right();
+						break;
+					case 2:
+						state.up();
+						break;
+					case 3:
+						state.down();
+						break;
+				}
+				break;
+				// Push numeric literal onto stack
 			case '0':
 			case '1':
 			case '2':
@@ -65,46 +87,74 @@ void Fungi::run()
 			case '9':
 				state.push(state.get() - '0');
 				break;
-			// Math
+				// Math
 			case '+':
 				{
-				int a = state.pop();
-				int b = state.pop();
-				state.push(a+b);
-				break;
+					int a = state.pop();
+					int b = state.pop();
+					state.push(a+b);
+					break;
 				}
 			case '*':
 				{
-				int a = state.pop();
-				int b = state.pop();
-				state.push(a*b);
-				break;
+					int a = state.pop();
+					int b = state.pop();
+					state.push(a*b);
+					break;
 				}
 			case '/':
 				{
-				int a = state.pop();
-				int b = state.pop();
-				state.push(a/b);
-				break;
+					int a = state.pop();
+					int b = state.pop();
+					if(a==0)
+					{
+						std::cout<<"What is the result of "<<a<<"/0? ";
+						std::cin>>b;
+						state.push(b);
+					}
+					else
+					{
+						state.push(b/a);
+					}
+					break;
 				}
 			case '-':
 				{
-				int a = state.pop();
-				int b = state.pop();
-				state.push(a-b);
-				break;
+					int a = state.pop();
+					int b = state.pop();
+					state.push(b-a);
+					break;
 				}
-			// Bridge
+			case '%':
+				{
+					int a = state.pop();
+					int b = state.pop();
+					state.push(b%a);
+					break;
+				}
+				// Logical not:
+			case '!':
+				state.push(!state.pop());
+				break;
+				// Greater than
+			case '`':
+				{
+					int a = state.pop();
+					int b = state.pop();
+					state.push(b>a);
+					break;
+				}
+				// Bridge
 			case '#':
 				state.move();
 				break;
-			// Duplicate top of stack
+				// Duplicate top of stack
 			case ':':
 				state.push(state.peek());
 				break;
-			// Conditional:
-			// Pop top:
-			// 	Move right if 0, left otherwise
+				// Conditional:
+				// Pop top:
+				// 	Move right if 0, left otherwise
 			case '_':
 				if(state.pop() == 0)
 				{
@@ -115,7 +165,37 @@ void Fungi::run()
 					state.left();
 				}
 				break;
-			// End:
+				// Vertical conditional
+			case '|':
+				if(state.pop() == 0)
+				{
+					state.down();
+				}
+				else
+				{
+					state.up();
+				}
+				// Discard
+			case '$':
+				state.pop();
+				break;
+				// Swap top stack values
+			case '\\':
+				state.swap();
+				break;
+				// Get integer
+			case '&':
+				{
+					int i;
+					std::cin >> i;
+					state.push(i);
+				}
+				break;
+				// Get char
+			case '~':
+				state.push(getchar());
+				break;
+				// End:
 			case '@':
 				end = true;
 				break;

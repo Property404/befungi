@@ -95,6 +95,14 @@ int State::pop()
 	return p;
 }
 
+int State::swap()
+{
+	int a = pop();
+	int b = pop();
+	push(a);
+	push(b);
+}
+
 int State::peek() const
 {
 	if(stack.empty())

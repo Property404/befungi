@@ -6,8 +6,6 @@
 TEST_CASE("State class works correctly"){
 	std::string code = "Anything\nElse\nBut\nLove!";
 	State state(code);
-
-	SECTION("Check stack")
 	{
 		REQUIRE(state.peek() == 0);
 		REQUIRE(state.pop() == 0);
@@ -28,6 +26,14 @@ TEST_CASE("State class works correctly"){
 		REQUIRE(state.pop() == 3);
 		REQUIRE(state.pop() == 9);
 		REQUIRE(state.pop() == 0);
+		REQUIRE(state.pop() == 0);
+		REQUIRE(state.pop() == 0);
+		state.push(4);
+		state.push(5);
+		REQUIRE(state.peek() == 5);
+		state.swap();
+		REQUIRE(state.peek() == 4);
+		state.swap();
 	}
 
 	SECTION("Check if PC counter moves correctly"){
