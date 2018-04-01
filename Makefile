@@ -20,7 +20,7 @@ TEST_SOURCES = $(TEST_FILES:%.o=$(TEST_DIR)/%.o)
 NOTEST_SOURCES = $(NOTEST_FILES:%.o=$(COMMON_DIR)/%.o)
 
 # Compiler flags
-CPPFLAGS = -std=c++14 -Wall -Wextra -pedantic -I$(COMMON_DIR) -I$(TEST_DIR)
+CPPFLAGS = -std=c++14 -Wall -Wextra -pedantic -I$(COMMON_DIR)
 
 # Build recipe
 befungi: $(COMMON_SOURCES) $(NOTEST_SOURCES)

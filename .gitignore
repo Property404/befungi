@@ -2,6 +2,7 @@
 !*.cpp
 !*.h
 !*.hxx
+!*.hpp
 !tests
 !src
 !Makefile
