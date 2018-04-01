@@ -1,5 +1,7 @@
 #include "fungi.h"
 #include <iostream>
+#include <cstdlib>
+#include <cstdio>
 
 Fungi::Fungi(const std::string& code)
 {

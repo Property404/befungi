@@ -95,7 +95,7 @@ long int State::pop()
 	return p;
 }
 
-long int State::swap()
+void State::swap()
 {
 	long int a = pop();
 	long int b = pop();

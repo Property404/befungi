@@ -33,7 +33,7 @@ class State{
 		// Stack manipulation
 		void push(long int);
 		long int pop();
-		long int swap(); // Swap top stacks
+		void swap(); // Swap top stacks
 		long int peek() const;
 
 		// Program manipulation
