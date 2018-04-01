@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include <iostream>
 #include <stdio.h>
-#include "../src/fungi.h"
+#include "fungi.h"
 
 TEST_CASE("Check fungi")
 {

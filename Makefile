@@ -10,9 +10,6 @@ TEST_NAME = test
 INSTALL_DIR = /usr/local/bin/
 INSTALL_COMMAND = install
 
-# Compiler flags
-CC = g++
-CPPFLAGS = -pedantic -std=c++14 -Wall -Wextra
 
 COMMON_FILES = state.o fungi.o
 TEST_FILES = main.o state.o fungi.o
@@ -22,11 +19,14 @@ COMMON_SOURCES = $(COMMON_FILES:%.o=$(COMMON_DIR)/%.o)
 TEST_SOURCES = $(TEST_FILES:%.o=$(TEST_DIR)/%.o)
 NOTEST_SOURCES = $(NOTEST_FILES:%.o=$(COMMON_DIR)/%.o)
 
+# Compiler flags
+CPPFLAGS = -std=c++14 -Wall -Wextra -pedantic -I$(COMMON_DIR) -I$(TEST_DIR)
+
 # Build recipe
 befungi: $(COMMON_SOURCES) $(NOTEST_SOURCES)
-	$(CC) -o $(EXECUTABLE_NAME) $(NOTEST_SOURCES) $(COMMON_SOURCES) $(CPPFLAGS)
+	$(CXX) -o $(EXECUTABLE_NAME) $(NOTEST_SOURCES) $(COMMON_SOURCES) $(CPPFLAGS)
 test: $(COMMON_SOURCES) $(TEST_SOURCES)
-	$(CC) -o $(TEST_NAME) $(TEST_SOURCES) $(COMMON_SOURCES) $(CPPFLAGS)
+	$(CXX) -o $(TEST_NAME) $(TEST_SOURCES) $(COMMON_SOURCES) $(CPPFLAGS)
 	./test
 install:
 	$(INSTALL_COMMAND) $(EXECUTABLE_NAME) $(INSTALL_DIR)

@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include <iostream>
 #include <stdio.h>
-#include "../src/state.h"
+#include "state.h"
 
 TEST_CASE("State class works correctly"){
 	std::string code = "Anything\nElse\nBut\nLove!";

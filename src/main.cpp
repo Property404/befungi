@@ -52,7 +52,7 @@ int main(int argc, const char* argv[]){
 	std::stringstream buffer;
 	std::ifstream fp(args::get(input_file));
 	if(fp.fail()){
-		std::cerr<<"Could not open file "+input_file<<std::endl;
+		std::cerr<<"Could not open file "+args::get(input_file)<<std::endl;
 		return 1;
 	}
 	buffer << fp.rdbuf();
